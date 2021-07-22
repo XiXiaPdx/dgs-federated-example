@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+const plugin = require('@newrelic/apollo-server-plugin')
+
 const { ApolloServer, gql } = require('apollo-server');
 const {ApolloGateway} = require('@apollo/gateway')
 
@@ -24,5 +26,7 @@ const gateway = new ApolloGateway({
     ]
 });
 
-const server = new ApolloServer({ gateway, subscriptions:false, tracing:true });
+const server = new ApolloServer({ gateway, subscriptions:false, tracing:true,
+plugins: [ plugin ]
+ });
 server.listen();

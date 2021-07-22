@@ -1,4 +1,29 @@
-This repository is a GraphQL demo of using the DGS framework together with Apollo Federation Server.
+All credit to NetFlix, should have just forked the original repo. This repository is a GraphQL demo of using the DGS framework together with Apollo Federation Server.
+
+This is "ready" to be instrumented by the New Relic Apollo plugin and the New Relic Java agent. 
+
+Apollo-gateway 
+
+1. The apollo-gateway is setup to be instrumented by the New Relic Apollo plugin (which includes the Node agent). 
+2. Run `npm install` in the `apollo-gateway` project
+3. Set the following _required_ environment variables:
+   
+
+
+`NR_LICENSE` - this should be your license key. This will be used in `newrelic.js` in the Apollo-gateway directory.
+
+`APOLLO_NAME` - app name reported to New Relic for the apollo-gateway.
+
+4. Set the following _optional_ environment variables:
+   
+`REVIEWS_AGENT_PATH` - the path to the New Relic Java agent that will instrument reviews-dgs. 
+
+
+`SHOWS_AGENT_PATH` - the path to the New Relic Java agent that will instrument shows-dgs.
+
+5. Run `runit.sh` script to start all three services. When you are done, `crtl+c` will terminate all three services.
+
+***
 
 Documentation for the DGS framework can be found [here](https://netflix.github.io/dgs).
 

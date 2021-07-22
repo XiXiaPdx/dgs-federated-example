@@ -56,3 +56,12 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.bootRun {
+        var path =  project.properties["agentJarPath"]
+        val pathAsString = path as String
+        if(!path.isBlank()){
+                jvmArgs("-javaagent:" + pathAsString)
+        }
+}
+
